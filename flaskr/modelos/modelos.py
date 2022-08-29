@@ -6,6 +6,7 @@ import enum
 
 db = SQLAlchemy()
 
+#Adding a comment
 albumes_canciones = db.Table('album_cancion',
     db.Column('album_id', db.Integer, db.ForeignKey('album.id'), primary_key = True),
     db.Column('cancion_id', db.Integer, db.ForeignKey('cancion.id'), primary_key = True))
