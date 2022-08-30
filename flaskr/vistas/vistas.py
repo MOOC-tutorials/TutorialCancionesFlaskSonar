@@ -115,7 +115,14 @@ class VistaCancionesAlbum(Resource):
 class VistaAlbum(Resource):
 
     def get(self, id_album):
-        return album_schema.dump(Album.query.get_or_404(id_album))
+
+        resultproxy =  session.execute('SELECT * from Album where id={}'.format(album_id))
+        album = [{column: value for column, value in rowproxy.items()} for rowproxy in resultproxy]
+        if len(album) == 0:
+            return None
+        else:
+            return album[0]
+        #return album_schema.dump(Album.query.get_or_404(id_album))
 
     def put(self, id_album):
         album = Album.query.get_or_404(id_album)
