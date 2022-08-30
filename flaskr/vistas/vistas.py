@@ -122,7 +122,7 @@ class VistaAlbum(Resource):
             return None
         else:
             return album[0]
-        #return album_schema.dump(Album.query.get_or_404(id_album))
+        
 
     def put(self, id_album):
         album = Album.query.get_or_404(id_album)
